@@ -2,20 +2,32 @@ const form = document.querySelector('form');
 const title = form.elements[0];
 const author = form.elements[1];
 const button = form.elements[2];
-const library = [];
+let library = [];
 const bookStorage = document.querySelector('.book-storage');
-localStorage.setItem('library', JSON.stringify(library));
-const localLibrary = JSON.parse(localStorage.getItem('library'));
-console.log(JSON.parse(localStorage.getItem('library')));
 const book = {
     title,
     author,
 }
+const removeBtn = document.querySelectorAll('.remove-btn')
 
 const div = document.createElement('div');
 const p = document.createElement('p');
 const btn = document.createElement('button');
 
+const setLocalStorage = (book) => {
+    takingFromStorage()
+    library.push(book)
+    localStorage.setItem('library', JSON.stringify(library));
+}
+
+
+const takingFromStorage = () => {
+    library = JSON.parse(localStorage.getItem('library'));
+    if(localStorage.getItem('library') === null) 
+        library = [];
+};
+
+takingFromStorage()
 
 const createBook = (title, author) => {
     let bookContainer = div.cloneNode(true);
@@ -30,21 +42,18 @@ const createBook = (title, author) => {
     bookTitle.innerText = title;
     bookAuthor.innerText = author;
     bookButton.innerText = 'Remove';
+    bookButton.classList.add('remove-btn')
 }
+
+library.forEach(book => createBook(book.title, book.author))
 
 const addBook = () => {
     const newBook = Object.create(book);
     newBook.title = title.value;
     newBook.author = author.value;
     
-    library.push(newBook);
+    setLocalStorage(newBook)
     createBook(library[library.length-1].title, library[library.length-1].author);
-    localStorage.setItem('library', JSON.stringify(library));
-    console.log(JSON.parse(localStorage.getItem('library')));
-    console.log(typeof(JSON.parse(localStorage.getItem('library'))));
 }
 
 button.addEventListener('click', addBook);
-
-
-
