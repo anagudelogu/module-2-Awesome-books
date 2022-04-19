@@ -4,10 +4,21 @@ const author = form.elements[1];
 const button = form.elements[2];
 let library = [];
 const bookStorage = document.querySelector('.book-storage');
-const book = {
-  title,
-  author,
+class book {
+  title;
+  author;
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  };
 };
+
+// const book = new book(title, author)
+
+// const book = {
+//   title,
+//   author,
+// };
 
 const div = document.createElement('div');
 const p = document.createElement('p');
@@ -45,9 +56,10 @@ const createBook = (title, author) => {
 library.forEach((book) => createBook(book.title, book.author));
 
 const addBook = () => {
-  const newBook = Object.create(book);
-  newBook.title = title.value;
-  newBook.author = author.value;
+  // const newBook = Object.create(book);
+  const newBook = new book(title.value, author.value);
+  // newBook.title;
+  // newBook.author = author.value;
 
   setLocalStorage(newBook);
   createBook(library[library.length - 1].title, library[library.length - 1].author);
@@ -60,7 +72,7 @@ const remove = (title, author) => {
   takingFromStorage();
 
   for (let i = 0; i < library.length; i += 1) {
-    if (library[i].title === title && library[i].author === author) {
+    if (library[i].title.trim() === title.trim() && library[i].author.trim() === author.trim()) {
       library.splice(library.indexOf(library[i]), 1);
     }
   }
