@@ -1,11 +1,13 @@
-*, *::before, *::after{ 
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  }  
+}
 
 body {
-  width: 40%;
+  width: 60%;
   margin: 0 auto;
 }
 
@@ -45,6 +47,7 @@ h3.title {
 ul {
   list-style: none;
 }
+
 li {
   margin: 10px;
 }
@@ -52,7 +55,7 @@ li {
 hr {
   border: 1px solid black;
   width: 50%;
-  height: 0px;
+  height: 0;
   margin: 0 auto;
 }
 
