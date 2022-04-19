@@ -8,7 +8,6 @@ const div = document.createElement('div');
 const p = document.createElement('p');
 const btn = document.createElement('button');
 
-// Class book
 class Book {
   title;
 
@@ -20,7 +19,6 @@ class Book {
   }
 }
 
-// Class Storage
 class Storage {
   static takingFromStorage() {
     let library;
@@ -49,7 +47,6 @@ class Storage {
   }
 }
 
-// Class Library
 class Library {
   static displayLibrary() {
     const library = Storage.takingFromStorage();
@@ -59,7 +56,6 @@ class Library {
   static createBook(book) {
     const bookContainer = div.cloneNode(true);
     const bookText = p.cloneNode(true);
-    // const bookAuthor = p.cloneNode(true);
     const bookButton = btn.cloneNode(true);
 
     bookStorage.append(bookContainer);
@@ -67,7 +63,6 @@ class Library {
     bookContainer.append(bookText, bookButton);
 
     bookText.innerText = `"${book.title}" by ${book.author}`;
-    // bookAuthor.innerText = book.author;
     bookButton.innerText = 'Remove';
     bookButton.classList.add('remove-btn');
   }
@@ -87,20 +82,14 @@ class Library {
 Library.displayLibrary();
 
 addButton.addEventListener('click', () => {
-  // Validation
-  // Create a book
   const book = new Book(title.value, author.value);
-  // Add book to Library
   Library.createBook(book);
-  // Add book to Storage
   Storage.setLocalStorage(book);
-  // Clear inputs
   Library.clearInputs();
 });
 
 bookStorage.addEventListener('click', (e) => {
   const text = e.target.parentNode.children[0].textContent;
-  // const author = e.target.parentNode.children[1].textContent;
   Library.removeBook(e.target);
   Storage.removeFromLocalStorage(text);
 });
