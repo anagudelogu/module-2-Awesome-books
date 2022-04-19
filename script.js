@@ -38,10 +38,10 @@ class Storage {
     localStorage.setItem('library', JSON.stringify(library));
   }
 
-  static removeFromLocalStorage(title, author) {
+  static removeFromLocalStorage(text) {
     const library = Storage.takingFromStorage();
     library.forEach((book) => {
-      if (book.title.trim() === title.trim() && book.author.trim() === author.trim()) {
+      if (`"${book.title}" by ${book.author}`.trim() === text.trim()) {
         library.splice(library.indexOf(book), 1);
       }
     });
@@ -58,16 +58,16 @@ class Library {
 
   static createBook(book) {
     const bookContainer = div.cloneNode(true);
-    const bookTitle = p.cloneNode(true);
-    const bookAuthor = p.cloneNode(true);
+    const bookText = p.cloneNode(true);
+    // const bookAuthor = p.cloneNode(true);
     const bookButton = btn.cloneNode(true);
 
     bookStorage.append(bookContainer);
     bookContainer.classList.add('book');
-    bookContainer.append(bookTitle, bookAuthor, bookButton);
+    bookContainer.append(bookText, bookButton);
 
-    bookTitle.innerText = book.title;
-    bookAuthor.innerText = book.author;
+    bookText.innerText = `"${book.title}" by ${book.author}`;
+    // bookAuthor.innerText = book.author;
     bookButton.innerText = 'Remove';
     bookButton.classList.add('remove-btn');
   }
@@ -99,8 +99,8 @@ addButton.addEventListener('click', () => {
 });
 
 bookStorage.addEventListener('click', (e) => {
-  const title = e.target.parentNode.children[0].textContent;
-  const author = e.target.parentNode.children[1].textContent;
+  const text = e.target.parentNode.children[0].textContent;
+  // const author = e.target.parentNode.children[1].textContent;
   Library.removeBook(e.target);
-  Storage.removeFromLocalStorage(title, author);
+  Storage.removeFromLocalStorage(text);
 });
