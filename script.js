@@ -94,7 +94,6 @@ bookStorage.addEventListener('click', (e) => {
   Storage.removeFromLocalStorage(text);
 });
 
-
 // Section pages
 
 const navLinks = document.querySelector('.nav__links');
@@ -102,19 +101,17 @@ const list = document.querySelector('.book-list');
 const add = document.querySelector('.add-book');
 const contact = document.querySelector('.contact');
 
-
-navLinks.addEventListener('click', (e) =>{
+navLinks.addEventListener('click', (e) => {
   e.preventDefault();
-  if (e.target.classList.contains('List')){
+  if (e.target.classList.contains('List')) {
     add.classList.remove('active');
     contact.classList.remove('active');
     list.classList.add('active');
-
-  }else if(e.target.classList.contains('New')){
+  } else if (e.target.classList.contains('New')) {
     contact.classList.remove('active');
     list.classList.remove('active');
     add.classList.add('active');
-  }else{
+  } else {
     list.classList.remove('active');
     add.classList.remove('active');
     contact.classList.add('active');
@@ -128,6 +125,6 @@ const date = document.querySelector('.date');
 const clock = () => {
   const theDate = new Date();
   date.innerHTML = `${theDate.toDateString()}, ${theDate.getHours()}:${theDate.getMinutes()}:${theDate.getSeconds()}`;
-}
+};
 
-setInterval(clock, 1000)
+setInterval(clock, 1000);

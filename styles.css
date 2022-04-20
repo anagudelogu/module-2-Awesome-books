@@ -16,7 +16,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
-.nav{
+
+.nav {
   height: 5vh;
   display: flex;
   justify-content: space-between;
@@ -25,13 +26,13 @@ a {
   border: 3px solid black;
 }
 
-.nav__links{
+.nav__links {
   display: flex;
   justify-content: center;
   list-style: none;
 }
 
-.nav__link{
+.nav__link {
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -56,17 +57,19 @@ main {
   align-items: center;
 }
 
-.book-list{
+.book-list {
   position: absolute;
   opacity: 0;
   width: 60%;
-  transition: opacity 0.5s;
+  transition: all 0.5s;
+  transform: scale(0.1);
 }
 
-.book-list.active{
+.book-list.active {
   position: static;
   opacity: 1;
   z-index: 10;
+  transform: scale(1);
 }
 
 .book-list__book-storage {
@@ -86,17 +89,19 @@ main {
   padding: 2px 8px;
 }
 
-.add-book{
+.add-book {
   position: absolute;
   opacity: 0;
-  transition: opacity 0.5s;
+  transition: all 0.5s;
   width: 60%;
+  transform: scale(0.1);
 }
 
-.add-book.active{
+.add-book.active {
   position: static;
   opacity: 1;
   z-index: 10;
+  transform: scale(1);
 }
 
 h2.title {
@@ -140,28 +145,29 @@ input {
   height: 30px;
 }
 
-.contact{
+.contact {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   opacity: 0;
   position: absolute;
-  transition: opacity 0.5s;
+  transition: all 0.5s;
+  transform: scale(0.1);
 }
 
-.contact.active{
+.contact.active {
   position: static;
   opacity: 1;
   z-index: 10;
+  transform: scale(1);
 }
 
-.contact__list{
+.contact__list {
   list-style: disc;
 }
 
-
-.footer{
+.footer {
   height: 5vh;
   border: 3px solid black;
   display: flex;
