@@ -17,7 +17,7 @@ body {
   margin-bottom: 50px;
 }
 
-.book-storage {
+.book-list__book-storage {
   width: 60%;
   margin: 0 auto;
   margin-bottom: 70px;
@@ -35,7 +35,7 @@ body {
   padding: 2px 8px;
 }
 
-h3.title {
+h2.title {
   font-size: 30px;
   margin-top: 20px;
 }

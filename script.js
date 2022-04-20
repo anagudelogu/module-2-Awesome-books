@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-const bookStorage = document.querySelector('.book-storage');
+const bookStorage = document.querySelector('.book-list__book-storage');
 const form = document.querySelector('form');
 const title = form.elements[0];
 const author = form.elements[1];
