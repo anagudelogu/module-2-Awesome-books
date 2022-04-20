@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-const bookStorage = document.querySelector('.book-storage');
+const bookStorage = document.querySelector('.book-list__book-storage');
 const form = document.querySelector('form');
 const title = form.elements[0];
 const author = form.elements[1];
@@ -93,3 +93,38 @@ bookStorage.addEventListener('click', (e) => {
   Library.removeBook(e.target);
   Storage.removeFromLocalStorage(text);
 });
+
+// Section pages
+
+const navLinks = document.querySelector('.nav__links');
+const list = document.querySelector('.book-list');
+const add = document.querySelector('.add-book');
+const contact = document.querySelector('.contact');
+
+navLinks.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (e.target.classList.contains('List')) {
+    add.classList.remove('active');
+    contact.classList.remove('active');
+    list.classList.add('active');
+  } else if (e.target.classList.contains('New')) {
+    contact.classList.remove('active');
+    list.classList.remove('active');
+    add.classList.add('active');
+  } else {
+    list.classList.remove('active');
+    add.classList.remove('active');
+    contact.classList.add('active');
+  }
+});
+
+// Date
+
+const date = document.querySelector('.date');
+
+const clock = () => {
+  const theDate = new Date();
+  date.innerHTML = `${theDate.toDateString()}, ${theDate.getHours()}:${theDate.getMinutes()}:${theDate.getSeconds()}`;
+};
+
+setInterval(clock, 1000);
