@@ -95,6 +95,8 @@ bookStorage.addEventListener('click', (e) => {
 });
 
 
+// Section pages
+
 const navLinks = document.querySelector('.nav__links');
 const list = document.querySelector('.book-list');
 const add = document.querySelector('.add-book');
@@ -117,4 +119,15 @@ navLinks.addEventListener('click', (e) =>{
     add.classList.remove('active');
     contact.classList.add('active');
   }
-})
+});
+
+// Date
+
+const date = document.querySelector('.date');
+
+const clock = () => {
+  const theDate = new Date();
+  date.innerHTML = `${theDate.toDateString()}, ${theDate.getHours()}:${theDate.getMinutes()}:${theDate.getSeconds()}`;
+}
+
+setInterval(clock, 1000)

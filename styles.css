@@ -36,6 +36,13 @@ a {
   font-weight: bold;
 }
 
+.date {
+  position: absolute;
+  top: 5vh;
+  right: 2%;
+  font-size: 25px;
+}
+
 .title {
   font-size: 50px;
   text-align: center;
@@ -53,11 +60,13 @@ main {
   position: absolute;
   opacity: 0;
   width: 60%;
+  transition: opacity 0.5s;
 }
 
 .book-list.active{
   position: static;
   opacity: 1;
+  z-index: 10;
 }
 
 .book-list__book-storage {
@@ -80,11 +89,14 @@ main {
 .add-book{
   position: absolute;
   opacity: 0;
+  transition: opacity 0.5s;
+  width: 60%;
 }
 
 .add-book.active{
   position: static;
   opacity: 1;
+  z-index: 10;
 }
 
 h2.title {
@@ -112,13 +124,13 @@ hr {
 }
 
 form {
-  width: 60%;
+  /* width: 60%; */
   text-align: center;
   margin: 0 auto;
 }
 
 input {
-  width: 60%;
+  width: 40%;
   height: 30px;
   border: 3px solid black;
 }
@@ -135,11 +147,13 @@ input {
   align-items: center;
   opacity: 0;
   position: absolute;
+  transition: opacity 0.5s;
 }
 
 .contact.active{
   position: static;
   opacity: 1;
+  z-index: 10;
 }
 
 .contact__list{
