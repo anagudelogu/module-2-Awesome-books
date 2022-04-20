@@ -93,3 +93,28 @@ bookStorage.addEventListener('click', (e) => {
   Library.removeBook(e.target);
   Storage.removeFromLocalStorage(text);
 });
+
+
+const navLinks = document.querySelector('.nav__links');
+const list = document.querySelector('.book-list');
+const add = document.querySelector('.add-book');
+const contact = document.querySelector('.contact');
+
+
+navLinks.addEventListener('click', (e) =>{
+  e.preventDefault();
+  if (e.target.classList.contains('List')){
+    add.classList.remove('active');
+    contact.classList.remove('active');
+    list.classList.add('active');
+
+  }else if(e.target.classList.contains('New')){
+    contact.classList.remove('active');
+    list.classList.remove('active');
+    add.classList.add('active');
+  }else{
+    list.classList.remove('active');
+    add.classList.remove('active');
+    contact.classList.add('active');
+  }
+})
